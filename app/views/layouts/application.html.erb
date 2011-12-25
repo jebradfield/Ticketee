@@ -8,7 +8,15 @@
   <% else %>
     Ticketee
   <% end %>
-</title>	  
+</title>
+<nav>
+<% if user_signed_in? %>
+  Signed in as <%= current_user.email %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <%= link_to "Sign in", new_user_session_path %>
+<% end %>
+</nav>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -19,6 +27,7 @@
     <%= value %>
   </div>
 <% end %>
+<h1><%= link_to "Ticketee", root_path %><h1>
 <%= yield %>
 
 </body>
